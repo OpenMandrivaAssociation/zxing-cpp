@@ -61,7 +61,7 @@ This package contains the development files for %{name}.
 
 %build
 cd core
-%cmake -DWITH_GCRYPT=ON -DWITH_PCAP=ON -G Ninja
+%cmake -DENABLE_ENCODERS:BOOL=ON -G Ninja
 %ninja_build
 
 %install
