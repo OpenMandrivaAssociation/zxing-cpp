@@ -4,8 +4,8 @@
 
 Summary:	C++ port of the ZXing ("Zebra Crossing") barcode scanning library
 Name:		zxing-cpp
-Version:	1.0.5
-Release:	2
+Version:	1.0.6
+Release:	1
 Group:		System/Libraries
 License:	LGPLv2.1+
 Url:		https://github.com/nu-book/zxing-cpp
