@@ -1,16 +1,15 @@
-%define major 0
+%define major 1
 %define libname %mklibname ZXingCore %{major}
 %define devname %mklibname ZXingCore -d
 
 Summary:	C++ port of the ZXing ("Zebra Crossing") barcode scanning library
 Name:		zxing-cpp
-Version:	1.0.7
+Version:	1.0.8
 Release:	1
 Group:		System/Libraries
 License:	LGPLv2.1+
 Url:		https://github.com/nu-book/zxing-cpp
-Source0:	https://github.com/nu-book/zxing-cpp/archive/master.tar.gz
-Patch0:		zxing-cpp-20181126-linuxify.patch
+Source0:	https://github.com/nu-book/zxing-cpp/archive/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:	cmake ninja
 
 %description
@@ -54,17 +53,16 @@ This package contains the development files for %{name}.
 %{_includedir}/ZXing
 %{_libdir}/*.so
 %{_libdir}/cmake/*
+%{_libdir}/pkgconfig/*
 
 #----------------------------------------------------------------------------
 
 %prep
-%autosetup -p1 -n %{name}-master
+%autosetup -p1
+%cmake -DENABLE_ENCODERS:BOOL=ON -G Ninja
 
 %build
-cd core
-%cmake -DENABLE_ENCODERS:BOOL=ON -G Ninja
-%ninja_build
+%ninja_build -C build
 
 %install
-cd core
 %ninja_install -C build
