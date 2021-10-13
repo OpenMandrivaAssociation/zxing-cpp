@@ -16,6 +16,7 @@ BuildRequires:	pkgconfig(Qt5Core)
 BuildRequires:	pkgconfig(Qt5Gui)
 BuildRequires:	pkgconfig(Qt5Multimedia)
 BuildRequires:	pkgconfig(Qt5Quick)
+BuildRequires:  pkgconfig(fmt)
 
 %description
 This project is a C++ port of ZXing Library.
