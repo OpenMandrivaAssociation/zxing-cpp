@@ -11,6 +11,10 @@ License:	LGPLv2.1+
 Url:		https://github.com/nu-book/zxing-cpp
 Source0:	https://github.com/nu-book/zxing-cpp/archive/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:	cmake ninja
+BuildRequires:	pkgconfig(Qt5Core)
+BuildRequires:	pkgconfig(Qt5Gui)
+BuildRequires:	pkgconfig(Qt5Multimedia)
+BuildRequires:	pkgconfig(Qt5Quick)
 
 %description
 This project is a C++ port of ZXing Library.
