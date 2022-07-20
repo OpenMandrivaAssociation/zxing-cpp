@@ -1,10 +1,11 @@
 %define major 1
-%define libname %mklibname ZXing %{major}
+%define oldlibname %mklibname ZXing 1
+%define libname %mklibname ZXing
 %define devname %mklibname ZXing -d
 
 Summary:	C++ port of the ZXing ("Zebra Crossing") barcode scanning library
 Name:		zxing-cpp
-Version:	1.3.0
+Version:	1.4.0
 Release:	1
 Group:		System/Libraries
 License:	LGPLv2.1+
@@ -17,6 +18,7 @@ BuildRequires:	pkgconfig(Qt5Core)
 BuildRequires:	pkgconfig(Qt5Gui)
 BuildRequires:	pkgconfig(Qt5Multimedia)
 BuildRequires:	pkgconfig(Qt5Quick)
+Requires:	%{libname} = %{EVRD}
 
 %description
 This project is a C++ port of ZXing Library.
@@ -27,11 +29,15 @@ Same as ZXing, following barcode are supported:
   ITF, RSS-14, RSS-Expanded
 * 2D: QR Code, Data Matrix, Aztec (beta), PDF 417 (beta)
 
+%files
+%{_bindir}/ZXing{Reader,Writer}
+
 #----------------------------------------------------------------------------
 
 %package -n %{libname}
 Summary:	Main library for %{name}
 Group:		System/Libraries
+%rename %{oldlibname}
 
 %description -n %{libname}
 This project is a C++ port of ZXing Library.
