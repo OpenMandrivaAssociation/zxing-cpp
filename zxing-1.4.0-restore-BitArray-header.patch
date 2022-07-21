@@ -1,0 +1,11 @@
+diff -up zxing-cpp-1.4.0/core/CMakeLists.txt.omv~ zxing-cpp-1.4.0/core/CMakeLists.txt
+--- zxing-cpp-1.4.0/core/CMakeLists.txt.omv~	2022-07-22 00:28:40.490096581 +0200
++++ zxing-cpp-1.4.0/core/CMakeLists.txt	2022-07-22 00:28:11.917960399 +0200
+@@ -141,6 +141,7 @@ endif()
+ # define subset of public headers that get distributed with the binaries
+ set (PUBLIC_HEADERS
+     src/BarcodeFormat.h
++    src/BitArray.h # removed upstream - intentional or not? Still used by LO 7.4
+     src/BitHacks.h
+     src/ByteArray.h
+     src/CharacterSet.h
