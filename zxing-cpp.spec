@@ -1,22 +1,18 @@
-%define major 1
+%define major 2
 %define oldlibname %mklibname ZXing 1
-%define libname %mklibname ZXing
+%define libname %mklibname ZXing %{major}
 %define devname %mklibname ZXing -d
 
 Summary:	C++ port of the ZXing ("Zebra Crossing") barcode scanning library
 Name:		zxing-cpp
-Version:	1.4.0
-Release:	2
+Version:	2.0.0
+Release:	1
 Group:		System/Libraries
 License:	LGPLv2.1+
 Url:		https://github.com/nu-book/zxing-cpp
 Source0:	https://github.com/nu-book/zxing-cpp/archive/v%{version}/%{name}-%{version}.tar.gz
-# Upstream 1.4.0 removes the BitArray.h header (but keeps the class)
-# but LibreOffice 7.4.0.1 still relies on that header.
-# (And we aren't sure yet if the removal is intentional).
-# https://github.com/nu-book/zxing-cpp/issues/361
-Patch0:		zxing-1.4.0-restore-BitArray-header.patch
-BuildRequires:	cmake ninja
+BuildRequires:	cmake
+BuildRequires:	ninja
 BuildRequires:  qmake5
 BuildRequires:  git
 BuildRequires:	pkgconfig(Qt5Core)
@@ -55,6 +51,7 @@ Same as ZXing, following barcode are supported:
 
 %files -n %{libname}
 %{_libdir}/libZXing.so.%{major}*
+%{_libdir}/libZXing.so.3
 
 #----------------------------------------------------------------------------
 
