@@ -1,12 +1,12 @@
 %define major 2
 %define oldlibname %mklibname ZXing 1
-%define libname %mklibname ZXing %{major}
+%define libname %mklibname ZXing
 %define devname %mklibname ZXing -d
 
 Summary:	C++ port of the ZXing ("Zebra Crossing") barcode scanning library
 Name:		zxing-cpp
 Version:	2.0.0
-Release:	1
+Release:	2
 Group:		System/Libraries
 License:	LGPLv2.1+
 Url:		https://github.com/nu-book/zxing-cpp
