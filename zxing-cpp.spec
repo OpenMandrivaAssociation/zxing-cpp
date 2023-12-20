@@ -3,32 +3,26 @@
 %define libname %mklibname ZXing
 %define devname %mklibname ZXing -d
 
-Summary:	C++ port of the ZXing ("Zebra Crossing") barcode scanning library
+Summary:	ZXing-C++ is a multi-format linear/matrix barcode image processing library implemented in C++.
 Name:		zxing-cpp
 Version:	2.2.1
 Release:	1
 Group:		System/Libraries
-License:	LGPLv2.1+
-Url:		https://github.com/nu-book/zxing-cpp
-Source0:	https://github.com/nu-book/zxing-cpp/archive/v%{version}/%{name}-%{version}.tar.gz
+License:	Apache-2.0
+Url:		https://github.com/zxing-cpp/zxing-cpp
+Source0:	https://github.com/zxing-cpp/zxing-cpp/archive/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:	cmake
 BuildRequires:	ninja
-BuildRequires:  qmake5
 BuildRequires:  git
-BuildRequires:	pkgconfig(Qt5Core)
-BuildRequires:	pkgconfig(Qt5Gui)
-BuildRequires:	pkgconfig(Qt5Multimedia)
-BuildRequires:	pkgconfig(Qt5Quick)
 Requires:	%{libname} = %{EVRD}
 
 %description
-This project is a C++ port of ZXing Library.
+ZXing-C++ ("zebra crossing") is an open-source, multi-format linear/matrix
+barcode image processing library implemented in C++.
 
-Same as ZXing, following barcode are supported:
-* 1D product: UPC-A UPC-E EAN-8 EAN-13
-* 1D industrial: Code 39, Code 93, Code 128, Codabar,
-  ITF, RSS-14, RSS-Expanded
-* 2D: QR Code, Data Matrix, Aztec (beta), PDF 417 (beta)
+It was originally ported from the Java ZXing Library but has been developed
+further and now includes many improvements in terms of runtime and detection
+performance. It can both read and write barcodes in a number of formats.
 
 %files
 %{_bindir}/ZXing{Reader,Writer}
@@ -41,13 +35,13 @@ Group:		System/Libraries
 %rename %{oldlibname}
 
 %description -n %{libname}
-This project is a C++ port of ZXing Library.
+ZXing-C++ ("zebra crossing") is an open-source, multi-format linear/matrix
+barcode image processing library implemented in C++.
 
-Same as ZXing, following barcode are supported:
-* 1D product: UPC-A UPC-E EAN-8 EAN-13
-* 1D industrial: Code 39, Code 93, Code 128, Codabar,
-  ITF, RSS-14, RSS-Expanded
-* 2D: QR Code, Data Matrix, Aztec (beta), PDF 417 (beta)
+It was originally ported from the Java ZXing Library but has been developed
+further and now includes many improvements in terms of runtime and detection
+performance. It can both read and write barcodes in a number of formats.
+
 
 %files -n %{libname}
 %{_libdir}/libZXing.so.%{major}*
@@ -73,7 +67,7 @@ This package contains the development files for %{name}.
 
 %prep
 %autosetup -p1
-%cmake -DENABLE_ENCODERS:BOOL=ON -G Ninja
+%cmake -DCMAKE_CXX_STANDARD=20 -G Ninja
 
 %build
 %ninja_build -C build
