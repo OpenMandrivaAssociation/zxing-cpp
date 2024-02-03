@@ -6,7 +6,7 @@
 Summary:	C++ port of the ZXing ("Zebra Crossing") barcode scanning library
 Name:		zxing-cpp
 Version:	2.2.1
-Release:	1
+Release:	2
 Group:		System/Libraries
 License:	LGPLv2.1+
 Url:		https://github.com/nu-book/zxing-cpp
@@ -14,11 +14,13 @@ Source0:	https://github.com/nu-book/zxing-cpp/archive/v%{version}/%{name}-%{vers
 BuildRequires:	cmake
 BuildRequires:	ninja
 BuildRequires:  qmake5
-BuildRequires:  git
-BuildRequires:	pkgconfig(Qt5Core)
-BuildRequires:	pkgconfig(Qt5Gui)
-BuildRequires:	pkgconfig(Qt5Multimedia)
-BuildRequires:	pkgconfig(Qt5Quick)
+#BuildRequires:  git
+BuildRequires:	pkgconfig(opencv4)
+BuildRequires:	pkgconfig(Qt6Core)
+BuildRequires:	pkgconfig(Qt6Gui)
+BuildRequires:	pkgconfig(Qt6Multimedia)
+BuildRequires:	pkgconfig(Qt6Quick)
+BuildRequires:	pkgconfig(stb)
 Requires:	%{libname} = %{EVRD}
 
 %description
@@ -73,10 +75,12 @@ This package contains the development files for %{name}.
 
 %prep
 %autosetup -p1
-%cmake -DENABLE_ENCODERS:BOOL=ON -G Ninja
 
 %build
-%ninja_build -C build
+%cmake -Wno-dev \
+	-DENABLE_ENCODERS:BOOL=ON \
+	-G Ninja
+%ninja_build
 
 %install
 %ninja_install -C build
