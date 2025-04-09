@@ -6,11 +6,13 @@
 Summary:	C++ port of the ZXing ("Zebra Crossing") barcode scanning library
 Name:		zxing-cpp
 Version:	2.3.0
-Release:	1
+Release:	2
 Group:		System/Libraries
 License:	LGPLv2.1+
 Url:		https://github.com/nu-book/zxing-cpp
 Source0:	https://github.com/nu-book/zxing-cpp/archive/v%{version}/%{name}-%{version}.tar.gz
+# https://bugs.kde.org/show_bug.cgi?id=498240
+Patch0:		fix-improper-use-of-ndebug.patch
 BuildRequires:	cmake
 BuildRequires:	ninja
 BuildRequires:  qmake5
