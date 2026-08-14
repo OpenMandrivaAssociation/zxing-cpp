@@ -17,7 +17,7 @@ BuildRequires:	cmake
 BuildRequires:	ninja
 BuildRequires:  qmake5
 #BuildRequires:  git
-BuildRequires:	pkgconfig(opencv4)
+BuildRequires:	pkgconfig(opencv5)
 BuildRequires:	pkgconfig(Qt6Core)
 BuildRequires:	pkgconfig(Qt6Gui)
 BuildRequires:	pkgconfig(Qt6Multimedia)
